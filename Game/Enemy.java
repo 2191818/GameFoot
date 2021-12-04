@@ -16,7 +16,7 @@ public class Enemy extends Actor
     public int health = 5;
     
     public Enemy(int level)
-    {
+    {   
         if(level == 1)
         {
             setImage("spider.png");
@@ -35,7 +35,7 @@ public class Enemy extends Actor
     
     public void moveAlongPath()
     {
-        move(9);
+        move(5);
         List <Path> path90 = getObjectsAtOffset(-30, 0, Path.class);
         for(Path paths: path90)
         {

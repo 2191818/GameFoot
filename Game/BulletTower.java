@@ -27,7 +27,7 @@ public class BulletTower extends Actor
        List<Enemy> enemies = getObjectsInRange(100, Enemy.class);
        for(Enemy eachEnemy: enemies)
        {
-           if(fireRate > 3){
+           if(fireRate > 10){
                Projectile projectile = new Projectile();
                getWorld().addObject(projectile, getX(), getY());
                projectile.turnTowards(eachEnemy.getX(), eachEnemy.getY());

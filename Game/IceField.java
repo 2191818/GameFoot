@@ -1,14 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class GrassField here.
+ * Write a description of class IceField here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class GrassField extends World
+public class IceField extends World
 {
-    public static int Currency = 100;
+     public static int Currency = 100;
     
     public static int Lives = 10;
     
@@ -23,28 +23,28 @@ public class GrassField extends World
     int waveNumber = 1;
     
     int map [][] = {
-                    {0,0,0,0,0,0,0,0,0,0},
-                    {0,2,1,1,1,1,3,0,0,0},
-                    {0,1,0,0,0,0,5,1,1,1},
-                    {0,1,0,0,0,0,0,0,0,0},
-                    {1,3,0,0,0,0,0,0,0,0},
-                    {1,0,0,0,0,0,0,0,0,0},
-                    {4,1,1,1,1,2,0,4,1,1},
-                    {0,0,0,0,0,4,1,5,0,0},
-                    {0,0,0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0,0,0},
+                    {0,0,0,0,0,0,0,0,0,1},
+                    {1,1,1,2,0,0,0,0,0,1},
+                    {0,0,0,1,0,0,4,1,1,5},
+                    {0,0,0,1,0,0,1,0,0,0},
+                    {0,2,1,3,0,0,5,3,0,0},
+                    {0,1,0,0,0,0,0,1,0,0},
+                    {0,1,0,0,0,0,0,5,3,0},
+                    {0,1,0,4,1,2,0,0,1,0},
+                    {0,4,1,5,0,1,0,0,1,0},
+                    {0,0,0,0,0,4,1,1,5,0},
                 };
     
-    public GrassField()
+    public IceField()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(840, 600, 1);
         Menu menu = new Menu();
         addObject(menu,721,301);
-        addObject(new CurrencyDisplay1(), 720, 30);
-        addObject(new LivesDisplay1(), 720, 90);
-        addObject(new TowersDisplay1(), 720, 150);
-        GrassField();
+        addObject(new CurrencyDisplay3(), 720, 30);
+        addObject(new LivesDisplay3(), 720, 90);
+        addObject(new TowersDisplay3(), 720, 150);
+        Test();
     }
     
     public void act()
@@ -71,30 +71,30 @@ public class GrassField extends World
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
-    private void GrassField()
+    private void Test()
     {
         for(int i = 0; i < 10; i++)
             for(int p = 0; p < 10; p++)
             {
                 if(map[p][i] == 1)
                 {
-                    addObject(new dirtPath(true), 30 + i * 60, 30 + p * 60);
+                    addObject(new Path(true), 30 + i * 60, 30 + p * 60);
                 }
                 if(map[p][i] == 2)
                 {
-                    addObject(new dirtPath(90), 30 + i * 60, 30 + p * 60);
+                    addObject(new Path(90), 30 + i * 60, 30 + p * 60);
                 }
                 if(map[p][i] == 3)
                 {
-                    addObject(new dirtPath(180), 30 + i * 60, 30 + p * 60);
+                    addObject(new Path(180), 30 + i * 60, 30 + p * 60);
                 }
                 if(map[p][i] == 4)
                 {
-                    addObject(new dirtPath(0), 30 + i * 60, 30 + p * 60);
+                    addObject(new Path(0), 30 + i * 60, 30 + p * 60);
                 }
                 if(map[p][i] == 5)
                 {
-                    addObject(new dirtPath(270), 30 + i * 60, 30 + p * 60);
+                    addObject(new Path(270), 30 + i * 60, 30 + p * 60);
                 }
             }
     }

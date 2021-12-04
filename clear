@@ -1,0 +1,23 @@
+[33mcommit fc7ce303c06a43cf5fc7f6f688027991f9a02b94[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: %7478f% <%valvalatan04@gmail.com%>
+Date:   Sat Dec 4 12:58:29 2021 +0200
+
+    I added some small features to the Test world. Still need some more work tho. Then ill copy the frame to the other lvls and what will be left is the transition between worlds.
+
+[33mcommit e40fdc04e35961cf0ba3ed1fe50f697067b96cc8[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: %7478f% <%valvalatan04@gmail.com%>
+Date:   Thu Dec 2 21:50:50 2021 +0200
+
+    Completed the overall structure of the lvls. Still needs some work. Can not figure out the transition to other worlds command.
+
+[33mcommit d0cf717f6634c87d1258ef2d466d2d595a8c0328[m
+Author: %username% <%email%>
+Date:   Tue Nov 30 22:27:23 2021 -0500
+
+    game visuals and classes that are needed have been added
+
+[33mcommit 9f4c42485d9526aff9c450c807e1e818212e9e36[m
+Author: 2191818 <94261900+2191818@users.noreply.github.com>
+Date:   Tue Nov 30 22:22:58 2021 -0500
+
+    Initial commit

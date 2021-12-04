@@ -8,14 +8,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Test extends World
 {
-
     public static int Currency = 100;
     
-    public static int Lives = 5;
+    public static int Lives = 10;
     
-    public static int towersRemaining = 4;
+    public static int towerLimit = 4;
     
-    int BulletTowerPrice = 50; 
+    double towerVariable = 1;
+    
+    int BulletTowerPrice = 50;
+    
+    int AdvancedBulletTowerPrice = 125;
     
     int worldTime;
     
@@ -42,12 +45,14 @@ public class Test extends World
         addObject(menu,721,301);
         addObject(new CurrencyDisplay(), 720, 30);
         addObject(new LivesDisplay(), 720, 90);
+        addObject(new TowersDisplay(), 720, 150);
         Test();
     }
     
     public void act()
     {
        addInBulletTowers();
+       addInAdvancedBulletTowers();
        worldTime++;
        spawnWave();
        transitionToWorld();
@@ -55,7 +60,7 @@ public class Test extends World
     
     public void spawnWave()
     {
-        if(worldTime % 7 == 0)
+        if(worldTime % 20 == 0 && worldTime < 400)
         {
             addObject(new Enemy(waveNumber), 1, 90);
         }
@@ -99,11 +104,22 @@ public class Test extends World
     
     public void addInBulletTowers()
     {
-        if(Greenfoot.isKeyDown("w") && Greenfoot.getMouseInfo().getActor() == null && Currency >= BulletTowerPrice)
+        if(Greenfoot.isKeyDown("1") && Greenfoot.getMouseInfo().getActor() == null && Currency >= BulletTowerPrice && towerLimit > 0)
         {
             addObject(new BulletTower(), (Greenfoot.getMouseInfo().getX() / 60) * 60 + 30, (Greenfoot.getMouseInfo().getY() / 60) * 60 + 30);
             Currency -= BulletTowerPrice;
+            towerLimit -= towerVariable;
         }
+    }
+    
+    public void addInAdvancedBulletTowers()
+    {
+            if(Greenfoot.isKeyDown("2") && Greenfoot.getMouseInfo().getActor() == null && Currency >= AdvancedBulletTowerPrice && towerLimit > 0)
+        {
+            addObject(new AdvancedBulletTower(), (Greenfoot.getMouseInfo().getX() / 60) * 60 + 30, (Greenfoot.getMouseInfo().getY() / 60) * 60 + 30);
+            Currency -= AdvancedBulletTowerPrice;
+            towerLimit -= towerVariable;
+        }    
     }
     
     public void transitionToWorld()
@@ -114,7 +130,7 @@ public class Test extends World
         }
         else if(worldTime > 1600)
         {
-            Greenfoot.setWorld(new GrassField());
+            Greenfoot.setWorld(new StartMenu());
         }
     }
 }
