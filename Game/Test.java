@@ -22,8 +22,6 @@ public class Test extends World
     
     int worldTime;
     
-    int waveNumber = 1;
-    
     int map [][] = {
                     {0,0,0,0,0,0,0,0,0,1},
                     {1,1,1,2,0,0,0,0,0,1},
@@ -62,11 +60,15 @@ public class Test extends World
     {
         if(worldTime % 20 == 0 && worldTime < 400)
         {
-            addObject(new Enemy(waveNumber), 1, 90);
+            addObject(new Enemy(), 1, 90);
         }
-        if(worldTime % 200 == 199)
+        if(worldTime % 20 == 0 && worldTime >= 400 && worldTime < 800)
         {
-            waveNumber++;
+            addObject(new FastEnemy(), 1, 90);
+        }
+        if(worldTime % 20 == 0 && worldTime >= 800 && worldTime < 1000)
+        {
+            addObject(new StrongEnemy(), 1, 90);
         }
     }
     

@@ -6,14 +6,14 @@ import java.util.List;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Enemy extends Actor
+public class FastEnemy extends Actor
 {
     /**
      * Act - do whatever the Enemy wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     Test world;
-    public int health = 5;
+    public int health = 3;
     
     public void act()
     {
@@ -23,7 +23,7 @@ public class Enemy extends Actor
     
     public void moveAlongPath()
     {
-        move(5);
+        move(8);
         List <Path> path90 = getObjectsAtOffset(-30, 0, Path.class);
         for(Path paths: path90)
         {
@@ -78,3 +78,4 @@ public class Enemy extends Actor
         }
     }
 }
+

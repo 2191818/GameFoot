@@ -23,16 +23,16 @@ public class DesertField extends World
     int waveNumber = 1;
     
     int map [][] = {
+                    {0,0,0,0,1,0,0,0,0,0},
+                    {0,0,0,0,1,0,0,0,0,0},
+                    {0,0,2,1,3,0,0,0,0,0},
+                    {0,0,1,0,0,0,0,0,0,0},
+                    {0,0,4,1,1,1,1,1,1,2},
                     {0,0,0,0,0,0,0,0,0,1},
-                    {1,1,1,2,0,0,0,0,0,1},
-                    {0,0,0,1,0,0,4,1,1,5},
-                    {0,0,0,1,0,0,1,0,0,0},
-                    {0,2,1,3,0,0,5,3,0,0},
-                    {0,1,0,0,0,0,0,1,0,0},
-                    {0,1,0,0,0,0,0,5,3,0},
-                    {0,1,0,4,1,2,0,0,1,0},
-                    {0,4,1,5,0,1,0,0,1,0},
-                    {0,0,0,0,0,4,1,1,5,0},
+                    {0,0,0,0,0,0,0,0,0,1},
+                    {1,1,3,0,0,0,0,2,1,3},
+                    {0,0,1,0,0,0,0,1,0,0},
+                    {0,0,5,1,1,1,1,3,0,0},
                 };
     
     public DesertField()
@@ -44,7 +44,7 @@ public class DesertField extends World
         addObject(new CurrencyDisplay2(), 720, 30);
         addObject(new LivesDisplay2(), 720, 90);
         addObject(new TowersDisplay2(), 720, 150);
-        Test();
+        DesertField();
     }
     
     public void act()
@@ -71,30 +71,30 @@ public class DesertField extends World
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
-    private void Test()
+    private void DesertField()
     {
         for(int i = 0; i < 10; i++)
             for(int p = 0; p < 10; p++)
             {
                 if(map[p][i] == 1)
                 {
-                    addObject(new Path(true), 30 + i * 60, 30 + p * 60);
+                    addObject(new sandPath(true), 30 + i * 60, 30 + p * 60);
                 }
                 if(map[p][i] == 2)
                 {
-                    addObject(new Path(90), 30 + i * 60, 30 + p * 60);
+                    addObject(new sandPath(90), 30 + i * 60, 30 + p * 60);
                 }
                 if(map[p][i] == 3)
                 {
-                    addObject(new Path(180), 30 + i * 60, 30 + p * 60);
+                    addObject(new sandPath(180), 30 + i * 60, 30 + p * 60);
                 }
                 if(map[p][i] == 4)
                 {
-                    addObject(new Path(0), 30 + i * 60, 30 + p * 60);
+                    addObject(new sandPath(0), 30 + i * 60, 30 + p * 60);
                 }
                 if(map[p][i] == 5)
                 {
-                    addObject(new Path(270), 30 + i * 60, 30 + p * 60);
+                    addObject(new sandPath(270), 30 + i * 60, 30 + p * 60);
                 }
             }
     }
