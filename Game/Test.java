@@ -13,6 +13,8 @@ public class Test extends World
     
     public static int Lives = 5;
     
+    public static int towersRemaining = 4;
+    
     int BulletTowerPrice = 50; 
     
     int worldTime;
@@ -48,6 +50,7 @@ public class Test extends World
        addInBulletTowers();
        worldTime++;
        spawnWave();
+       transitionToWorld();
     }
     
     public void spawnWave()
@@ -96,10 +99,22 @@ public class Test extends World
     
     public void addInBulletTowers()
     {
-        if(Greenfoot.mouseClicked(null) && Greenfoot.getMouseInfo().getActor() == null && Currency >= BulletTowerPrice)
+        if(Greenfoot.isKeyDown("w") && Greenfoot.getMouseInfo().getActor() == null && Currency >= BulletTowerPrice)
         {
             addObject(new BulletTower(), (Greenfoot.getMouseInfo().getX() / 60) * 60 + 30, (Greenfoot.getMouseInfo().getY() / 60) * 60 + 30);
             Currency -= BulletTowerPrice;
+        }
+    }
+    
+    public void transitionToWorld()
+    {
+        if(Lives < 1)
+        {
+            Greenfoot.setWorld(new EndMenu());
+        }
+        else if(worldTime > 1600)
+        {
+            Greenfoot.setWorld(new GrassField());
         }
     }
 }

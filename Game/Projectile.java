@@ -12,8 +12,18 @@ public class Projectile extends Actor
      * Act - do whatever the Projectile wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    Test world;
     public void act()
     {
         move(10);
+        removeFromWorld();
+    }
+    
+    public void removeFromWorld()
+    {
+        if(isAtEdge())
+        {
+            getWorld().removeObject(this);
+        }
     }
 }

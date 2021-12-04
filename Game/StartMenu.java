@@ -38,18 +38,17 @@ public class StartMenu extends World
     }
     
     public void act()
-    {
-    MouseInfo mouse = Greenfoot.getMouseInfo();
-    if (mouse != null) {
-        int x = mouse.getX();
-        int y = mouse.getY();
-        if (Greenfoot.mouseClicked(null)){
-            if (mouse.getX() > 575 && mouse.getX() < 285 && mouse.getY() > 270 && mouse.getY() < 75){
-            Level1 q = new Level1();
-            Greenfoot.setWorld(q);    
+    {   if(Greenfoot.isKeyDown("c"))
+        {
+            Greenfoot.setWorld(new Test());        
+        }
+        //MouseInfo mouse = Greenfoot.getMouseInfo();
+        //if (mouse != null) {
+        //int x = mouse.getX();
+        //int y = mouse.getY();
+        //if (Greenfoot.mouseClicked(null)){
+            //if (mouse.getX() > 575 && mouse.getX() < 285 && mouse.getY() > 270 && mouse.getY() < 75){
+            //Level1 q = new Level1();
+           //Greenfoot.setWorld(q);    
             }
         }
-    }
-    }
-
-}
