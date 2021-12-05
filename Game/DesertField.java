@@ -8,21 +8,21 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class DesertField extends World
 {
-    public static int Currency = 75;
+    public static int Currency = 325;
     
-    public static int Lives = 5;
+    public static int Lives = 7;
     
     public static int towerLimit = 4;
     
     public static int EnemiesDestroyed = 0;
     
-    private int timer = 1500;
+    private int timer = 1750;
     
     double towerVariable = 1;
     
-    int BulletTowerPrice = 50;
+    int BulletTowerPrice = 75;
     
-    int AdvancedBulletTowerPrice = 125;
+    int AdvancedBulletTowerPrice = 150;
     
     int worldTime;
     
@@ -49,8 +49,8 @@ public class DesertField extends World
         addObject(new LivesDisplay2(), 720, 90);
         addObject(new TowersDisplay2(), 720, 150);
         addObject(new EnemiesDestroyedDisplay2(), 720, 210);
-        Currency = 75;
-        Lives = 5;
+        Currency = 325;
+        Lives = 7;
         towerLimit = 4;
         EnemiesDestroyed = 0;
         DesertField();
@@ -72,7 +72,7 @@ public class DesertField extends World
         {
             addObject(new Enemy(), 270, 10);
         }
-        if(worldTime % 20 == 0 && worldTime >= 600 && worldTime < 1010)
+        if(worldTime % 20 == 0 && worldTime >= 600 && worldTime < 1210)
         {
             addObject(new FastEnemy(), 270, 10);
         }
@@ -140,19 +140,19 @@ public class DesertField extends World
     {
         if(Lives < 1)
         {
-            Greenfoot.setWorld(new EndMenu());
+            Greenfoot.setWorld(new GameOverScreen());
         }
         if(timer < 1)
         {
-            Greenfoot.setWorld(new StartMenu());
+            Greenfoot.setWorld(new GameOverScreen());
         }
-        if(EnemiesDestroyed == 45)
+        if(EnemiesDestroyed == 55)
         {
-            Greenfoot.setWorld(new StartMenu());
+            Greenfoot.setWorld(new IceField());
         }
-        if (EnemiesDestroyed >= 40 && timer < 1)
+        if (EnemiesDestroyed >= 48 && timer < 1)
         {
-            Greenfoot.setWorld(new StartMenu());    
+            Greenfoot.setWorld(new IceField());    
         }
     }
 }

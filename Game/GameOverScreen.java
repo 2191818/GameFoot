@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class EndMenu extends World
+public class GameOverScreen extends World
 {
     
     double timeEndScreenCreation = System.currentTimeMillis();
@@ -15,10 +15,10 @@ public class EndMenu extends World
      * Constructor for objects of class EndMenu.
      * 
      */
-    public EndMenu()
+    public GameOverScreen()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(840, 590, 1); 
+        super(640, 480, 1); 
     }
     
     public void act()

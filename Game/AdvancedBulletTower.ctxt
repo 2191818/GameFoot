@@ -11,4 +11,6 @@ comment4.params=
 comment4.target=void\ fastEnemyDetector()
 comment5.params=
 comment5.target=void\ strongEnemyDetector()
-numComments=6
+comment6.params=
+comment6.target=void\ prototypeEnemyDetector()
+numComments=7

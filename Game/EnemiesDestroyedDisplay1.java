@@ -15,10 +15,10 @@ public class EnemiesDestroyedDisplay1 extends Actor
     GrassField game;
     public EnemiesDestroyedDisplay1()
     {
-        setImage(new GreenfootImage("Enemies Destroyed (/50): " + GrassField.EnemiesDestroyed, 20,Color.BLACK, new Color(0,0,0,0)));
+        setImage(new GreenfootImage("Enemies Destroyed (/45): " + GrassField.EnemiesDestroyed, 20,Color.BLACK, new Color(0,0,0,0)));
     }
     public void act()
     {
-        setImage(new GreenfootImage("Enemies Destroyed (/50): " + GrassField.EnemiesDestroyed, 20,Color.BLACK, new Color(0,0,0,0)));
+        setImage(new GreenfootImage("Enemies Destroyed (/45): " + GrassField.EnemiesDestroyed, 20,Color.BLACK, new Color(0,0,0,0)));
     }
 }

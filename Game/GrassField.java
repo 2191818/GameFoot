@@ -8,21 +8,21 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class GrassField extends World
 {
-    public static int Currency = 100;
+    public static int Currency = 400;
     
-    public static int Lives = 7;
+    public static int Lives = 10;
     
-    public static int towerLimit = 5;
+    public static int towerLimit = 6;
     
     public static int EnemiesDestroyed = 0;
     
-    private int timer = 1300;
+    private int timer = 1500;
     
     double towerVariable = 1;
     
-    int BulletTowerPrice = 50;
+    int BulletTowerPrice = 75;
     
-    int AdvancedBulletTowerPrice = 125;
+    int AdvancedBulletTowerPrice = 150;
     
     int worldTime;
     
@@ -49,9 +49,9 @@ public class GrassField extends World
         addObject(new LivesDisplay1(), 720, 90);
         addObject(new TowersDisplay1(), 720, 150);
         addObject(new EnemiesDestroyedDisplay1(), 720, 210);
-        Currency = 100;
-        Lives = 7;
-        towerLimit = 5;
+        Currency = 400;
+        Lives = 10;
+        towerLimit = 6;
         EnemiesDestroyed = 0;
         GrassField();
     }
@@ -67,7 +67,7 @@ public class GrassField extends World
     
     public void spawnWave()
     {
-        if(worldTime % 20 == 0 && worldTime > 150 && worldTime < 1005)
+        if(worldTime % 20 == 0 && worldTime > 150 && worldTime < 1050)
         {
             addObject(new Enemy(), 587, 148);
         }
@@ -125,19 +125,19 @@ public class GrassField extends World
     {
         if(Lives < 1)
         {
-            Greenfoot.setWorld(new EndMenu());
+            Greenfoot.setWorld(new GameOverScreen());
         }
         if(timer < 1)
         {
-            Greenfoot.setWorld(new StartMenu());
+            Greenfoot.setWorld(new GameOverScreen());
         }
-        if(EnemiesDestroyed == 50)
+        if(EnemiesDestroyed == 45)
         {
-            Greenfoot.setWorld(new StartMenu());
+            Greenfoot.setWorld(new DesertField());
         }
-        if(EnemiesDestroyed >= 43 && timer < 1)
+        if(EnemiesDestroyed >= 30 && timer < 1)
         {
-            Greenfoot.setWorld(new StartMenu());    
+            Greenfoot.setWorld(new DesertField());    
         }
     }
 }

@@ -17,20 +17,22 @@ public class BulletTower extends Actor
     {
         getImage().scale(60, 60);
     }
+    
     public void act()
     {
        enemyDetector();
        fastEnemyDetector();
        strongEnemyDetector();
-       simpleEnemyDetector();
+       prototypeEnemyDetector();
     }
+    
     public void enemyDetector()
     {
        fireRate++; 
        List<Enemy> enemies = getObjectsInRange(100, Enemy.class);
        for(Enemy eachEnemy: enemies)
        {
-           if(fireRate > 35){
+           if(fireRate > 30){
                Projectile projectile = new Projectile();
                getWorld().addObject(projectile, getX(), getY());
                projectile.turnTowards(eachEnemy.getX(), eachEnemy.getY());
@@ -44,7 +46,7 @@ public class BulletTower extends Actor
        List<FastEnemy> enemies = getObjectsInRange(100, FastEnemy.class);
        for(FastEnemy eachEnemy: enemies)
        {
-           if(fireRate > 35){
+           if(fireRate > 30){
                Projectile projectile = new Projectile();
                getWorld().addObject(projectile, getX(), getY());
                projectile.turnTowards(eachEnemy.getX(), eachEnemy.getY());
@@ -52,13 +54,14 @@ public class BulletTower extends Actor
            }
         }    
     }
+    
     public void strongEnemyDetector()
     {
        fireRate++; 
        List<StrongEnemy> enemies = getObjectsInRange(100, StrongEnemy.class);
        for(StrongEnemy eachEnemy: enemies)
        {
-           if(fireRate > 35){
+           if(fireRate > 30){
                Projectile projectile = new Projectile();
                getWorld().addObject(projectile, getX(), getY());
                projectile.turnTowards(eachEnemy.getX(), eachEnemy.getY());
@@ -66,13 +69,13 @@ public class BulletTower extends Actor
            }
         }    
     }
-    public void simpleEnemyDetector()
+    public void prototypeEnemyDetector()
     {
        fireRate++; 
-       List<SimpleEnemy> enemies = getObjectsInRange(100, SimpleEnemy.class);
-       for(SimpleEnemy eachEnemy: enemies)
+       List<PrototypeEnemy> enemies = getObjectsInRange(100, PrototypeEnemy.class);
+       for(PrototypeEnemy eachEnemy: enemies)
        {
-           if(fireRate > 35){
+           if(fireRate > 30){
                Projectile projectile = new Projectile();
                getWorld().addObject(projectile, getX(), getY());
                projectile.turnTowards(eachEnemy.getX(), eachEnemy.getY());

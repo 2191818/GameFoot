@@ -8,11 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class IceField extends World
 {
-     public static int Currency = 100;
+     public static int Currency = 250;
     
-    public static int Lives = 10;
+    public static int Lives = 4;
     
-    public static int towerLimit = 4;
+    public static int towerLimit = 3;
     
     public static int EnemiesDestroyed = 0;
     
@@ -22,18 +22,20 @@ public class IceField extends World
     
     int BulletTowerPrice = 50; 
     
+    int AdvancedBulletTowerPrice = 125;
+    
     int worldTime;
     
     int map [][] = {
-                    {1,0,0,0,0,0,0,0,0,0},
-                    {1,0,0,0,0,0,0,0,0,0},
-                    {1,0,0,0,0,0,0,0,0,0},
-                    {5,1,1,3,0,0,0,0,0,0},
-                    {0,0,0,1,0,0,0,0,0,0},
-                    {0,0,4,5,0,0,0,0,0,0},
-                    {0,0,1,0,0,0,0,0,0,0},
-                    {0,0,1,0,0,0,2,1,1,1},
-                    {0,0,5,1,1,1,1,0,0,0},
+                    {0,0,0,0,0,1,0,0,0,0},
+                    {0,0,0,0,0,5,1,3,0,0},
+                    {0,0,0,0,0,0,0,1,0,0},
+                    {1,1,1,2,0,0,0,1,0,0},
+                    {0,0,0,1,0,0,0,1,0,0},
+                    {0,0,2,3,0,0,0,1,0,0},
+                    {0,0,1,0,0,0,0,1,0,0},
+                    {0,0,1,0,0,0,4,5,0,0},
+                    {0,0,4,1,1,1,5,0,0,0},
                     {0,0,0,0,0,0,0,0,0,0},
                 };
     
@@ -46,30 +48,37 @@ public class IceField extends World
         addObject(new CurrencyDisplay3(), 720, 30);
         addObject(new LivesDisplay3(), 720, 90);
         addObject(new TowersDisplay3(), 720, 150);
+        addObject(new EnemiesDestroyedDisplay3(), 720, 210);
+        Currency = 250;
+        Lives = 4;
+        towerLimit = 4;
+        EnemiesDestroyed = 0;
         IceField();
     }
     
     public void act()
     {
        addInBulletTowers();
+       addInAdvancedBulletTowers();
        worldTime++;
        spawnWave();
+       timer();
        transitionToWorld();
     }
     
     public void spawnWave()
     {
-        if(worldTime % 20 == 0 && worldTime < 400)
+        if(worldTime % 20 == 0 && worldTime < 700)
         {
-            addObject(new Enemy(), 1, 90);
+            addObject(new Enemy(), 8, 209);
         }
-        if(worldTime % 20 == 0 && worldTime >= 400 && worldTime < 800)
+        if(worldTime % 20 == 0 && worldTime >= 700 && worldTime < 1300)
         {
-            addObject(new FastEnemy(), 1, 90);
+            addObject(new FastEnemy(), 8, 209);
         }
-        if(worldTime % 20 == 0 && worldTime >= 800 && worldTime < 1000)
+        if(worldTime % 20 == 0 && worldTime >= 1300 && worldTime < 1510)
         {
-            addObject(new StrongEnemy(), 1, 90);
+            addObject(new StrongEnemy(), 8, 209);
         }
     }
     
@@ -115,16 +124,39 @@ public class IceField extends World
         }
     }
     
+        public void addInAdvancedBulletTowers()
+    {
+        if(Greenfoot.isKeyDown("2") && Greenfoot.getMouseInfo().getActor() == null && Currency >= AdvancedBulletTowerPrice && towerLimit > 0)
+        {
+            addObject(new AdvancedBulletTower(), (Greenfoot.getMouseInfo().getX() / 60) * 60 + 30, (Greenfoot.getMouseInfo().getY() / 60) * 60 + 30);
+            Currency -= AdvancedBulletTowerPrice;
+            towerLimit -= towerVariable;
+        }    
+    }
+    
+            public void timer()
+    {
+        timer--;
+        showText("Time Left: " +timer, 720, 270);
+    }
     
     public void transitionToWorld()
     {
         if(Lives < 1)
         {
-            Greenfoot.setWorld(new EndMenu());
+            Greenfoot.setWorld(new GameOverScreen());
         }
-        else if(worldTime > 1600)
+        if(timer < 1)
         {
-            Greenfoot.setWorld(new StartMenu());
+            Greenfoot.setWorld(new GameOverScreen());
+        }
+        if(EnemiesDestroyed == 75)
+        {
+            Greenfoot.setWorld(new LevelSelection());
+        }
+        if (EnemiesDestroyed >= 70 && timer < 1)
+        {
+            Greenfoot.setWorld(new LevelSelection());    
         }
     }
 }

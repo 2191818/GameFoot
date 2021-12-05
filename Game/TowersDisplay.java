@@ -12,14 +12,14 @@ public class TowersDisplay extends Actor
      * Act - do whatever the TowersDisplay wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    Test game;
+    TutorialLevel game;
     public TowersDisplay()
     {
-        setImage(new GreenfootImage("Towers Remaining: " + Test.towerLimit, 25,Color.BLACK, new Color(0,0,0,0)));
+        setImage(new GreenfootImage("Towers Remaining: " + TutorialLevel.towerLimit, 25,Color.BLACK, new Color(0,0,0,0)));
     }
     public void act()
     {
-        setImage(new GreenfootImage("Towers Remaining: " + Test.towerLimit, 25,Color.BLACK, new Color(0,0,0,0)));
+        setImage(new GreenfootImage("Towers Remaining: " + TutorialLevel.towerLimit, 25,Color.BLACK, new Color(0,0,0,0)));
         if(Greenfoot.mouseClicked(this))
             game.towerLimit = 4;
     }

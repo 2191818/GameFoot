@@ -12,50 +12,51 @@ public class StrongEnemy extends Actor
      * Act - do whatever the Enemy wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    Test world;
-    public int health = 10;
+    IceField world3;
+    
+    public int health = 20;
     
     public void act()
     {
-        moveAlongPath();
+        moveAlongIcePath();
         hitByProjectile();
     }
     
-    public void moveAlongPath()
+    public void moveAlongIcePath()
     {
-        move(2);
-        List <Path> path90 = getObjectsAtOffset(-30, 0, Path.class);
-        for(Path paths: path90)
+        move(1);
+        List <icePath> icepath90 = getObjectsAtOffset(-30, 0, icePath.class);
+        for(icePath icepaths: icepath90)
         {
-            if(paths.straigth == false && getRotation() == 0)
+            if(icepaths.straigth == false && getRotation() == 0)
             {
-                setRotation(paths.turn);
+                setRotation(icepaths.turn);
             }
         }
-        List <Path> path180 = getObjectsAtOffset(0, 30, Path.class);
-        for(Path paths: path180)
+        List <icePath> icepath270 = getObjectsAtOffset(30, 0, icePath.class);
+        for(icePath icepaths: icepath270)
         {
-            if(paths.straigth == false && getRotation() == 270)
+            if(icepaths.straigth == false && getRotation() == 180)
             {
-                setRotation(paths.turn);
+                setRotation(icepaths.turn);
+            }
+        }  
+        List <icePath> icepath180 = getObjectsAtOffset(0, 30, icePath.class);
+        for(icePath icepaths: icepath180)
+        {
+            if(icepaths.straigth == false && getRotation() == 270)
+            {
+                setRotation(icepaths.turn);
             }
         }
-        List <Path> path0 = getObjectsAtOffset(0, -30, Path.class);
-        for(Path paths: path0)
+        List <icePath> icepath0 = getObjectsAtOffset(0, -30, icePath.class);
+        for(icePath icepaths: icepath0)
         {
-            if(paths.straigth == false && getRotation() == 90)
+            if(icepaths.straigth == false && getRotation() == 90)
             {
-                setRotation(paths.turn);
+                setRotation(icepaths.turn);
             }
         }
-        List <Path> path270 = getObjectsAtOffset(30, 0, Path.class);
-        for(Path paths: path270)
-        {
-            if(paths.straigth == false && getRotation() == 180)
-            {
-                setRotation(paths.turn);
-            }
-        }    
     }
     
     public void hitByProjectile()
@@ -68,14 +69,14 @@ public class StrongEnemy extends Actor
         }
         if(health < 1)
         {
-            world.Currency += 15;
-            world.EnemiesDestroyed++;
+            world3.Currency += 45;
+            world3.EnemiesDestroyed++;
             getWorld().removeObject(this);
         }
         else if(isAtEdge())
         {
             getWorld().removeObject(this);
-            world.Lives--;
+            world3.Lives--;
         }
     }
 }

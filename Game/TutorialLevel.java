@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Test extends World
+public class TutorialLevel extends World
 {
     public static int Currency = 100;
     
@@ -39,7 +39,7 @@ public class Test extends World
                     {0,0,0,0,0,4,1,1,5,0},
                 };
     
-    public Test()
+    public TutorialLevel()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(840, 600, 1);
@@ -53,7 +53,7 @@ public class Test extends World
         Lives = 10;
         towerLimit = 4;
         EnemiesDestroyed = 0;
-        Test();
+        TutorialLevel();
     }
     
     public void act()
@@ -68,17 +68,9 @@ public class Test extends World
     
     public void spawnWave()
     {
-        if(worldTime % 20 == 0 && worldTime < 400)
+        if(worldTime % 20 == 0 && worldTime < 410)
         {
-            addObject(new Enemy(), 1, 90);
-        }
-        if(worldTime % 20 == 0 && worldTime >= 400 && worldTime < 800)
-        {
-            addObject(new FastEnemy(), 1, 90);
-        }
-        if(worldTime % 40 == 0 && worldTime >= 800 && worldTime < 1010)
-        {
-            addObject(new StrongEnemy(), 1, 90);
+            addObject(new PrototypeEnemy(), 1, 90);
         }
     }
     
@@ -86,7 +78,7 @@ public class Test extends World
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
-    private void Test()
+    private void TutorialLevel()
     {
         for(int i = 0; i < 10; i++)
             for(int p = 0; p < 10; p++)
@@ -144,11 +136,11 @@ public class Test extends World
     {
         if(Lives < 1)
         {
-            Greenfoot.setWorld(new EndMenu());
+            Greenfoot.setWorld(new GameOverScreen());
         }
         if(timer < 1)
         {
-            Greenfoot.setWorld(new StartMenu());
+            Greenfoot.setWorld(new GameOverScreen());
         }
         if(EnemiesDestroyed == 45)
         {
