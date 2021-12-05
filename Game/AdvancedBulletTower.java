@@ -21,6 +21,7 @@ public class AdvancedBulletTower extends Actor
     {
        enemyDetector();
        fastEnemyDetector();
+       strongEnemyDetector();
     }
     public void enemyDetector()
     {
@@ -28,7 +29,7 @@ public class AdvancedBulletTower extends Actor
        List<Enemy> enemies = getObjectsInRange(125, Enemy.class);
        for(Enemy eachEnemy: enemies)
        {
-           if(fireRate > 10){
+           if(fireRate > 20){
                Projectile projectile = new Projectile();
                getWorld().addObject(projectile, getX(), getY());
                projectile.turnTowards(eachEnemy.getX(), eachEnemy.getY());
@@ -42,7 +43,7 @@ public class AdvancedBulletTower extends Actor
        List<FastEnemy> enemies = getObjectsInRange(100, FastEnemy.class);
        for(FastEnemy eachEnemy: enemies)
        {
-           if(fireRate > 10){
+           if(fireRate > 20){
                Projectile projectile = new Projectile();
                getWorld().addObject(projectile, getX(), getY());
                projectile.turnTowards(eachEnemy.getX(), eachEnemy.getY());
@@ -56,7 +57,7 @@ public class AdvancedBulletTower extends Actor
        List<StrongEnemy> enemies = getObjectsInRange(100, StrongEnemy.class);
        for(StrongEnemy eachEnemy: enemies)
        {
-           if(fireRate > 10){
+           if(fireRate > 20){
                Projectile projectile = new Projectile();
                getWorld().addObject(projectile, getX(), getY());
                projectile.turnTowards(eachEnemy.getX(), eachEnemy.getY());

@@ -8,31 +8,35 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class DesertField extends World
 {
-    public static int Currency = 100;
+    public static int Currency = 75;
     
-    public static int Lives = 10;
+    public static int Lives = 5;
     
     public static int towerLimit = 4;
     
+    public static int EnemiesDestroyed = 0;
+    
+    private int timer = 1500;
+    
     double towerVariable = 1;
     
-    int BulletTowerPrice = 50; 
+    int BulletTowerPrice = 50;
+    
+    int AdvancedBulletTowerPrice = 125;
     
     int worldTime;
     
-    int waveNumber = 1;
-    
     int map [][] = {
-                    {0,0,0,0,1,0,0,0,0,0},
-                    {0,0,0,0,1,0,0,0,0,0},
-                    {0,0,2,1,3,0,0,0,0,0},
-                    {0,0,1,0,0,0,0,0,0,0},
-                    {0,0,4,1,1,1,1,1,1,2},
-                    {0,0,0,0,0,0,0,0,0,1},
-                    {0,0,0,0,0,0,0,0,0,1},
-                    {1,1,3,0,0,0,0,2,1,3},
-                    {0,0,1,0,0,0,0,1,0,0},
-                    {0,0,5,1,1,1,1,3,0,0},
+                    {0,0,0,0,2,0,0,0,0,0},
+                    {0,0,0,0,2,0,0,0,0,0},
+                    {0,0,2,3,3,0,0,0,0,0},
+                    {0,0,2,0,0,0,0,0,0,0},
+                    {0,0,4,4,4,4,4,4,4,2},
+                    {0,0,0,0,0,0,0,0,0,2},
+                    {0,0,0,0,0,0,0,0,0,2},
+                    {3,3,3,0,0,0,0,2,3,3},
+                    {0,0,5,0,0,0,0,2,0,0},
+                    {0,0,5,3,3,3,3,3,0,0},
                 };
     
     public DesertField()
@@ -44,26 +48,33 @@ public class DesertField extends World
         addObject(new CurrencyDisplay2(), 720, 30);
         addObject(new LivesDisplay2(), 720, 90);
         addObject(new TowersDisplay2(), 720, 150);
+        addObject(new EnemiesDestroyedDisplay2(), 720, 210);
+        Currency = 75;
+        Lives = 5;
+        towerLimit = 4;
+        EnemiesDestroyed = 0;
         DesertField();
     }
     
     public void act()
     {
        addInBulletTowers();
+       addInAdvancedBulletTowers();
        worldTime++;
        spawnWave();
+       timer();
        transitionToWorld();
     }
     
     public void spawnWave()
     {
-        if(worldTime % 7 == 0)
+        if(worldTime % 20 == 0 && worldTime > 100 && worldTime < 600)
         {
-            addObject(new Enemy(waveNumber), 1, 90);
+            addObject(new Enemy(), 270, 10);
         }
-        if(worldTime % 200 == 199)
+        if(worldTime % 20 == 0 && worldTime >= 600 && worldTime < 1010)
         {
-            waveNumber++;
+            addObject(new FastEnemy(), 270, 10);
         }
     }
     
@@ -109,6 +120,21 @@ public class DesertField extends World
         }
     }
     
+    public void addInAdvancedBulletTowers()
+    {
+        if(Greenfoot.isKeyDown("2") && Greenfoot.getMouseInfo().getActor() == null && Currency >= AdvancedBulletTowerPrice && towerLimit > 0)
+        {
+            addObject(new AdvancedBulletTower(), (Greenfoot.getMouseInfo().getX() / 60) * 60 + 30, (Greenfoot.getMouseInfo().getY() / 60) * 60 + 30);
+            Currency -= AdvancedBulletTowerPrice;
+            towerLimit -= towerVariable;
+        }    
+    }
+    
+        public void timer()
+    {
+        timer--;
+        showText("Time Left: " +timer, 720, 270);
+    }
     
     public void transitionToWorld()
     {
@@ -116,9 +142,17 @@ public class DesertField extends World
         {
             Greenfoot.setWorld(new EndMenu());
         }
-        else if(worldTime > 1600)
+        if(timer < 1)
         {
             Greenfoot.setWorld(new StartMenu());
+        }
+        if(EnemiesDestroyed == 45)
+        {
+            Greenfoot.setWorld(new StartMenu());
+        }
+        if (EnemiesDestroyed >= 40 && timer < 1)
+        {
+            Greenfoot.setWorld(new StartMenu());    
         }
     }
 }

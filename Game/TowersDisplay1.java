@@ -21,6 +21,6 @@ public class TowersDisplay1 extends Actor
     {
         setImage(new GreenfootImage("Towers Remaining: " + GrassField.towerLimit, 25,Color.BLACK, new Color(0,0,0,0)));
         if(Greenfoot.mouseClicked(this))
-            game.towerLimit = 4;
+            game.towerLimit = 5;
     }
 }

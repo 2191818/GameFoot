@@ -10,29 +10,33 @@ public class GrassField extends World
 {
     public static int Currency = 100;
     
-    public static int Lives = 10;
+    public static int Lives = 7;
     
-    public static int towerLimit = 4;
+    public static int towerLimit = 5;
+    
+    public static int EnemiesDestroyed = 0;
+    
+    private int timer = 1300;
     
     double towerVariable = 1;
     
-    int BulletTowerPrice = 50; 
+    int BulletTowerPrice = 50;
+    
+    int AdvancedBulletTowerPrice = 125;
     
     int worldTime;
     
-    int waveNumber = 1;
-    
     int map [][] = {
                     {0,0,0,0,0,0,0,0,0,0},
-                    {0,2,1,1,1,1,3,0,0,0},
-                    {0,1,0,0,0,0,5,1,1,1},
-                    {0,1,0,0,0,0,0,0,0,0},
-                    {1,3,0,0,0,0,0,0,0,0},
-                    {1,0,0,0,0,0,0,0,0,0},
-                    {4,1,1,1,1,2,0,4,1,1},
-                    {0,0,0,0,0,4,1,5,0,0},
-                    {0,0,0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0,0,0},
+                    {0,2,3,3,3,3,3,0,0,0},
+                    {0,2,0,0,0,0,5,3,3,3},
+                    {0,2,0,0,0,0,0,0,0,0},
+                    {2,3,0,0,0,0,0,0,0,0},
+                    {2,0,0,0,0,0,0,0,0,0},
+                    {4,4,4,4,4,2,0,0,0,0},
+                    {0,0,0,0,0,4,4,4,4,2},
+                    {0,0,0,0,0,0,0,0,0,2},
+                    {0,0,0,0,0,0,0,0,0,2},
                 };
     
     public GrassField()
@@ -44,6 +48,11 @@ public class GrassField extends World
         addObject(new CurrencyDisplay1(), 720, 30);
         addObject(new LivesDisplay1(), 720, 90);
         addObject(new TowersDisplay1(), 720, 150);
+        addObject(new EnemiesDestroyedDisplay1(), 720, 210);
+        Currency = 100;
+        Lives = 7;
+        towerLimit = 5;
+        EnemiesDestroyed = 0;
         GrassField();
     }
     
@@ -52,18 +61,15 @@ public class GrassField extends World
        addInBulletTowers();
        worldTime++;
        spawnWave();
+       timer();
        transitionToWorld();
     }
     
     public void spawnWave()
     {
-        if(worldTime % 7 == 0)
+        if(worldTime % 20 == 0 && worldTime > 150 && worldTime < 1005)
         {
-            addObject(new Enemy(waveNumber), 1, 90);
-        }
-        if(worldTime % 200 == 199)
-        {
-            waveNumber++;
+            addObject(new Enemy(), 587, 148);
         }
     }
     
@@ -109,6 +115,11 @@ public class GrassField extends World
         }
     }
     
+    public void timer()
+    {
+        timer--;
+        showText("Time Left: " +timer, 720, 270);
+    }
     
     public void transitionToWorld()
     {
@@ -116,9 +127,17 @@ public class GrassField extends World
         {
             Greenfoot.setWorld(new EndMenu());
         }
-        else if(worldTime > 1600)
+        if(timer < 1)
         {
             Greenfoot.setWorld(new StartMenu());
+        }
+        if(EnemiesDestroyed == 50)
+        {
+            Greenfoot.setWorld(new StartMenu());
+        }
+        if(EnemiesDestroyed >= 43 && timer < 1)
+        {
+            Greenfoot.setWorld(new StartMenu());    
         }
     }
 }

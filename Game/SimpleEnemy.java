@@ -6,15 +6,14 @@ import java.util.List;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class StrongEnemy extends Actor
+public class SimpleEnemy extends Actor
 {
     /**
      * Act - do whatever the Enemy wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    Test world;
-    public int health = 10;
-    
+    GrassField world;
+    public int health = 5;
     public void act()
     {
         moveAlongPath();
@@ -23,39 +22,39 @@ public class StrongEnemy extends Actor
     
     public void moveAlongPath()
     {
-        move(2);
-        List <Path> path90 = getObjectsAtOffset(-30, 0, Path.class);
-        for(Path paths: path90)
+        move(5);
+        List <dirtPath> dirtpath90 = getObjectsAtOffset(-30, 0, dirtPath.class);
+        for(dirtPath dirtpaths: dirtpath90)
         {
-            if(paths.straigth == false && getRotation() == 0)
+            if(dirtpaths.straigth == false && getRotation() == 0)
             {
-                setRotation(paths.turn);
+                setRotation(dirtpaths.turn);
             }
         }
-        List <Path> path180 = getObjectsAtOffset(0, 30, Path.class);
-        for(Path paths: path180)
+        List <dirtPath> dirtpath270 = getObjectsAtOffset(30, 0, dirtPath.class);
+        for(dirtPath dirtpaths: dirtpath270)
         {
-            if(paths.straigth == false && getRotation() == 270)
+            if(dirtpaths.straigth == false && getRotation() == 180)
             {
-                setRotation(paths.turn);
+                setRotation(dirtpaths.turn);
+            }
+        }  
+        List <dirtPath> path180 = getObjectsAtOffset(0, 30, dirtPath.class);
+        for(dirtPath dirtpaths: path180)
+        {
+            if(dirtpaths.straigth == false && getRotation() == 270)
+            {
+                setRotation(dirtpaths.turn);
             }
         }
-        List <Path> path0 = getObjectsAtOffset(0, -30, Path.class);
-        for(Path paths: path0)
+        List <dirtPath> dirtpath0 = getObjectsAtOffset(0, -30, dirtPath.class);
+        for(dirtPath dirtpaths: dirtpath0)
         {
-            if(paths.straigth == false && getRotation() == 90)
+            if(dirtpaths.straigth == false && getRotation() == 90)
             {
-                setRotation(paths.turn);
+                setRotation(dirtpaths.turn);
             }
-        }
-        List <Path> path270 = getObjectsAtOffset(30, 0, Path.class);
-        for(Path paths: path270)
-        {
-            if(paths.straigth == false && getRotation() == 180)
-            {
-                setRotation(paths.turn);
-            }
-        }    
+        } 
     }
     
     public void hitByProjectile()
@@ -69,7 +68,6 @@ public class StrongEnemy extends Actor
         if(health < 1)
         {
             world.Currency += 15;
-            world.EnemiesDestroyed++;
             getWorld().removeObject(this);
         }
         else if(isAtEdge())
@@ -79,5 +77,4 @@ public class StrongEnemy extends Actor
         }
     }
 }
-
 

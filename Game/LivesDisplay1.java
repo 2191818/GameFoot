@@ -21,6 +21,6 @@ public class LivesDisplay1 extends Actor
     {
         setImage(new GreenfootImage("Lives: " + GrassField.Lives, 40,Color.BLACK, new Color(0,0,0,0)));
         if(Greenfoot.mouseClicked(this))
-            game.Lives = 10;
+            game.Lives = 7;
     }
 }

@@ -21,6 +21,8 @@ public class BulletTower extends Actor
     {
        enemyDetector();
        fastEnemyDetector();
+       strongEnemyDetector();
+       simpleEnemyDetector();
     }
     public void enemyDetector()
     {
@@ -28,7 +30,7 @@ public class BulletTower extends Actor
        List<Enemy> enemies = getObjectsInRange(100, Enemy.class);
        for(Enemy eachEnemy: enemies)
        {
-           if(fireRate > 20){
+           if(fireRate > 35){
                Projectile projectile = new Projectile();
                getWorld().addObject(projectile, getX(), getY());
                projectile.turnTowards(eachEnemy.getX(), eachEnemy.getY());
@@ -42,7 +44,7 @@ public class BulletTower extends Actor
        List<FastEnemy> enemies = getObjectsInRange(100, FastEnemy.class);
        for(FastEnemy eachEnemy: enemies)
        {
-           if(fireRate > 20){
+           if(fireRate > 35){
                Projectile projectile = new Projectile();
                getWorld().addObject(projectile, getX(), getY());
                projectile.turnTowards(eachEnemy.getX(), eachEnemy.getY());
@@ -56,7 +58,21 @@ public class BulletTower extends Actor
        List<StrongEnemy> enemies = getObjectsInRange(100, StrongEnemy.class);
        for(StrongEnemy eachEnemy: enemies)
        {
-           if(fireRate > 20){
+           if(fireRate > 35){
+               Projectile projectile = new Projectile();
+               getWorld().addObject(projectile, getX(), getY());
+               projectile.turnTowards(eachEnemy.getX(), eachEnemy.getY());
+               fireRate = 0;
+           }
+        }    
+    }
+    public void simpleEnemyDetector()
+    {
+       fireRate++; 
+       List<SimpleEnemy> enemies = getObjectsInRange(100, SimpleEnemy.class);
+       for(SimpleEnemy eachEnemy: enemies)
+       {
+           if(fireRate > 35){
                Projectile projectile = new Projectile();
                getWorld().addObject(projectile, getX(), getY());
                projectile.turnTowards(eachEnemy.getX(), eachEnemy.getY());

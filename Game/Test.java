@@ -14,6 +14,10 @@ public class Test extends World
     
     public static int towerLimit = 4;
     
+    public static int EnemiesDestroyed = 0;
+    
+    private int timer = 1600;
+    
     double towerVariable = 1;
     
     int BulletTowerPrice = 50;
@@ -44,6 +48,11 @@ public class Test extends World
         addObject(new CurrencyDisplay(), 720, 30);
         addObject(new LivesDisplay(), 720, 90);
         addObject(new TowersDisplay(), 720, 150);
+        addObject(new EnemiesDestroyedDisplay(), 720, 210);
+        Currency = 100;
+        Lives = 10;
+        towerLimit = 4;
+        EnemiesDestroyed = 0;
         Test();
     }
     
@@ -53,6 +62,7 @@ public class Test extends World
        addInAdvancedBulletTowers();
        worldTime++;
        spawnWave();
+       timer();
        transitionToWorld();
     }
     
@@ -66,7 +76,7 @@ public class Test extends World
         {
             addObject(new FastEnemy(), 1, 90);
         }
-        if(worldTime % 20 == 0 && worldTime >= 800 && worldTime < 1000)
+        if(worldTime % 40 == 0 && worldTime >= 800 && worldTime < 1010)
         {
             addObject(new StrongEnemy(), 1, 90);
         }
@@ -116,12 +126,18 @@ public class Test extends World
     
     public void addInAdvancedBulletTowers()
     {
-            if(Greenfoot.isKeyDown("2") && Greenfoot.getMouseInfo().getActor() == null && Currency >= AdvancedBulletTowerPrice && towerLimit > 0)
+        if(Greenfoot.isKeyDown("2") && Greenfoot.getMouseInfo().getActor() == null && Currency >= AdvancedBulletTowerPrice && towerLimit > 0)
         {
             addObject(new AdvancedBulletTower(), (Greenfoot.getMouseInfo().getX() / 60) * 60 + 30, (Greenfoot.getMouseInfo().getY() / 60) * 60 + 30);
             Currency -= AdvancedBulletTowerPrice;
             towerLimit -= towerVariable;
         }    
+    }
+    
+    public void timer()
+    {
+        timer--;
+        showText("Time Left: " +timer, 720, 270);
     }
     
     public void transitionToWorld()
@@ -130,7 +146,11 @@ public class Test extends World
         {
             Greenfoot.setWorld(new EndMenu());
         }
-        else if(worldTime > 1600)
+        if(timer < 1)
+        {
+            Greenfoot.setWorld(new StartMenu());
+        }
+        if(EnemiesDestroyed == 45)
         {
             Greenfoot.setWorld(new StartMenu());
         }
