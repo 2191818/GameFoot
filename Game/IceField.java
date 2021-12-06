@@ -8,37 +8,37 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class IceField extends World
 {
-     public static int Currency = 250;
-    
+    public static int Currency = 250;
+
     public static int Lives = 4;
-    
+
     public static int towerLimit = 3;
-    
+
     public static int EnemiesDestroyed = 0;
-    
+
     private int timer = 2500;
-    
+
     double towerVariable = 1;
-    
+
     int BulletTowerPrice = 50; 
-    
+
     int AdvancedBulletTowerPrice = 125;
-    
+
     int worldTime;
-    
+
     int map [][] = {
-                    {0,0,0,0,0,1,0,0,0,0},
-                    {0,0,0,0,0,5,1,3,0,0},
-                    {0,0,0,0,0,0,0,1,0,0},
-                    {1,1,1,2,0,0,0,1,0,0},
-                    {0,0,0,1,0,0,0,1,0,0},
-                    {0,0,2,3,0,0,0,1,0,0},
-                    {0,0,1,0,0,0,0,1,0,0},
-                    {0,0,1,0,0,0,4,5,0,0},
-                    {0,0,4,1,1,1,5,0,0,0},
-                    {0,0,0,0,0,0,0,0,0,0},
-                };
-    
+            {0,0,0,0,0,1,0,0,0,0},
+            {0,0,0,0,0,5,1,3,0,0},
+            {0,0,0,0,0,0,0,1,0,0},
+            {1,1,1,2,0,0,0,1,0,0},
+            {0,0,0,1,0,0,0,1,0,0},
+            {0,0,2,3,0,0,0,1,0,0},
+            {0,0,1,0,0,0,0,1,0,0},
+            {0,0,1,0,0,0,4,5,0,0},
+            {0,0,4,1,1,1,5,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0},
+        };
+
     public IceField()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -54,21 +54,22 @@ public class IceField extends World
         towerLimit = 4;
         EnemiesDestroyed = 0;
         IceField();
+        prepare();
     }
-    
+
     public void act()
     {
-       addInBulletTowers();
-       addInAdvancedBulletTowers();
-       worldTime++;
-       spawnWave();
-       timer();
-       transitionToWorld();
+        addInBulletTowers();
+        addInAdvancedBulletTowers();
+        worldTime++;
+        spawnWave();
+        timer();
+        transitionToWorld();
     }
-    
+
     public void spawnWave()
     {
-        if(worldTime % 20 == 0 && worldTime < 700)
+        if(worldTime % 20 == 10 && worldTime < 700)
         {
             addObject(new Enemy(), 8, 209);
         }
@@ -81,7 +82,7 @@ public class IceField extends World
             addObject(new StrongEnemy(), 8, 209);
         }
     }
-    
+
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
@@ -113,7 +114,7 @@ public class IceField extends World
                 }
             }
     }
-    
+
     public void addInBulletTowers()
     {
         if(Greenfoot.isKeyDown("1") && Greenfoot.getMouseInfo().getActor() == null && Currency >= BulletTowerPrice && towerLimit >= 1)
@@ -123,8 +124,8 @@ public class IceField extends World
             towerLimit -= towerVariable;
         }
     }
-    
-        public void addInAdvancedBulletTowers()
+
+    public void addInAdvancedBulletTowers()
     {
         if(Greenfoot.isKeyDown("2") && Greenfoot.getMouseInfo().getActor() == null && Currency >= AdvancedBulletTowerPrice && towerLimit > 0)
         {
@@ -133,13 +134,13 @@ public class IceField extends World
             towerLimit -= towerVariable;
         }    
     }
-    
-            public void timer()
+
+    public void timer()
     {
         timer--;
         showText("Time Left: " +timer, 720, 270);
     }
-    
+
     public void transitionToWorld()
     {
         if(Lives < 1)
@@ -152,11 +153,20 @@ public class IceField extends World
         }
         if(EnemiesDestroyed == 75)
         {
-            Greenfoot.setWorld(new LevelSelection());
+            Greenfoot.setWorld(new WellDone());
         }
         if (EnemiesDestroyed >= 70 && timer < 1)
         {
             Greenfoot.setWorld(new LevelSelection());    
         }
+    }
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+    private void prepare()
+    {
+        Player player = new Player();
+        addObject(player,349,49);
     }
 }

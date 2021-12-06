@@ -38,10 +38,19 @@ public class StartMenu extends World
     }
     
     public void act()
-    {   if(Greenfoot.isKeyDown("c"))
+    {   if(Greenfoot.isKeyDown("t"))
         {
             Greenfoot.setWorld(new TutorialLevel());        
         }
+        if(Greenfoot.isKeyDown("s"))
+        {
+            Greenfoot.setWorld(new LevelSelection());        
+        }
+        if(Greenfoot.isKeyDown("c"))
+        {
+            Greenfoot.setWorld(new Controls());
+        }
+        
         //MouseInfo mouse = Greenfoot.getMouseInfo();
         //if (mouse != null) {
         //int x = mouse.getX();
