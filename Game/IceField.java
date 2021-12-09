@@ -155,10 +155,7 @@ public class IceField extends World
         {
             Greenfoot.setWorld(new WellDone());
         }
-        if (EnemiesDestroyed >= 70 && timer < 1)
-        {
-            Greenfoot.setWorld(new LevelSelection());    
-        }
+        
     }
     /**
      * Prepare the world for the start of the program.

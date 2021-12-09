@@ -15,10 +15,10 @@ public class EnemiesDestroyedDisplay3 extends Actor
     IceField game;
     public EnemiesDestroyedDisplay3()
     {
-        setImage(new GreenfootImage("Enemies Destroyed (/75): " + IceField.EnemiesDestroyed, 20,Color.BLACK, new Color(0,0,0,0)));
+        setImage(new GreenfootImage("Enemies Destroyed (75): " + IceField.EnemiesDestroyed, 20,Color.BLACK, new Color(0,0,0,0)));
     }
     public void act()
     {
-        setImage(new GreenfootImage("Enemies Destroyed (/75): " + IceField.EnemiesDestroyed, 20,Color.BLACK, new Color(0,0,0,0)));
+        setImage(new GreenfootImage("Enemies Destroyed (75): " + IceField.EnemiesDestroyed, 20,Color.BLACK, new Color(0,0,0,0)));
     }
 }

@@ -17,7 +17,9 @@ public class StartMenu extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1430, 900, 1); 
-
+        GreenfootSound backgroundMusic = new GreenfootSound("gameplay.wav");
+        backgroundMusic.playLoop();
+        
         getBackground().setColor(Color.RED);
         getBackground().setFont(new Font(45));
         getBackground().drawString("Start Game", 600, 320);
@@ -35,29 +37,42 @@ public class StartMenu extends World
         getBackground().drawString("Controls", 635, 575);
         getBackground().setColor(Color.RED);
         getBackground().drawRect(575, 525, 285, 75);
-    }
-    
+        
+        getBackground().setColor(Color.WHITE);
+        getBackground().setFont(new Font(20));
+        getBackground().drawString("Muhammad Arsalan Saeed and Valentin Atanasov", 500, 850);
+        prepare();
+        
+        }
+
     public void act()
-    {   if(Greenfoot.isKeyDown("t"))
+    {   if(Greenfoot.isKeyDown("2"))
         {
             Greenfoot.setWorld(new TutorialLevel());        
         }
-        if(Greenfoot.isKeyDown("s"))
+        if(Greenfoot.isKeyDown("1"))
         {
             Greenfoot.setWorld(new LevelSelection());        
         }
-        if(Greenfoot.isKeyDown("c"))
+        if(Greenfoot.isKeyDown("3"))
         {
             Greenfoot.setWorld(new Controls());
         }
-        
-        //MouseInfo mouse = Greenfoot.getMouseInfo();
-        //if (mouse != null) {
-        //int x = mouse.getX();
-        //int y = mouse.getY();
-        //if (Greenfoot.mouseClicked(null)){
-            //if (mouse.getX() > 575 && mouse.getX() < 285 && mouse.getY() > 270 && mouse.getY() < 75){
-            //Level1 q = new Level1();
-           //Greenfoot.setWorld(q);    
-            }
-        }
+           
+    }
+    
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+    private void prepare()
+    {
+        Vanier vanier = new Vanier();
+        addObject(vanier,741,526);
+        vanier.setLocation(229,92);
+        vanier.setLocation(247,71);
+        vanier.setLocation(282,86);
+        vanier.setLocation(237,107);
+        vanier.setLocation(206,99);
+    }
+}

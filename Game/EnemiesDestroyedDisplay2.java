@@ -15,10 +15,10 @@ public class EnemiesDestroyedDisplay2 extends Actor
     DesertField game;
     public EnemiesDestroyedDisplay2()
     {
-        setImage(new GreenfootImage("Enemies Destroyed (/55): " + DesertField.EnemiesDestroyed, 20,Color.BLACK, new Color(0,0,0,0)));
+        setImage(new GreenfootImage("Enemies Destroyed (55): " + DesertField.EnemiesDestroyed, 20,Color.BLACK, new Color(0,0,0,0)));
     }
     public void act()
     {
-        setImage(new GreenfootImage("Enemies Destroyed (/55): " + DesertField.EnemiesDestroyed, 20,Color.BLACK, new Color(0,0,0,0)));
+        setImage(new GreenfootImage("Enemies Destroyed (55): " + DesertField.EnemiesDestroyed, 20,Color.BLACK, new Color(0,0,0,0)));
     }
 }

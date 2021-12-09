@@ -15,10 +15,10 @@ public class EnemiesDestroyedDisplay extends Actor
     TutorialLevel game;
     public EnemiesDestroyedDisplay()
     {
-        setImage(new GreenfootImage("Enemies Destroyed (/20): " + TutorialLevel.EnemiesDestroyed, 20,Color.BLACK, new Color(0,0,0,0)));
+        setImage(new GreenfootImage("Enemies Destroyed (20): " + TutorialLevel.EnemiesDestroyed, 20,Color.BLACK, new Color(0,0,0,0)));
     }
     public void act()
     {
-        setImage(new GreenfootImage("Enemies Destroyed (/20): " + TutorialLevel.EnemiesDestroyed, 20,Color.BLACK, new Color(0,0,0,0)));
+        setImage(new GreenfootImage("Enemies Destroyed (20): " + TutorialLevel.EnemiesDestroyed, 20,Color.BLACK, new Color(0,0,0,0)));
     }
 }
