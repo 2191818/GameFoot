@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=icePath
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ icePath\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=straigth
+comment1.target=icePath(boolean)
+comment2.params=turn
+comment2.target=icePath(int)
+comment3.params=
+comment3.target=void\ act()
+numComments=4

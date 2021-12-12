@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=AdvancedBulletTower
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ AdvancedBulletTower\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=AdvancedBulletTower()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ enemyDetector()
+comment4.params=
+comment4.target=void\ fastEnemyDetector()
+comment5.params=
+comment5.target=void\ strongEnemyDetector()
+comment6.params=
+comment6.target=void\ prototypeEnemyDetector()
+numComments=7
